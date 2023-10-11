@@ -1,9 +1,29 @@
 import tokenize
+import os 
+import subprocess
 
-target_file_lists = ["second.py"]
-corpus_file_lists = ["third.py", "hello.py"]
+#Get the root of python file from the folder
+def get_python_files(folder_path):
+    python_files = []
 
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".py"):
+                python_files.append(os.path.join(root, file))
 
+    return python_files
+
+# target folder path
+target_folder_path = "/Users/quanggg/Desktop/target"
+#corpus folder path
+corpus_folder_path = "/Users/quanggg/Desktop/corpus"
+
+# target file lists
+target_file_lists = get_python_files(target_folder_path)
+# corpus file lists
+corpus_file_lists = get_python_files(corpus_folder_path)
+print(target_file_lists)
+print(corpus_file_lists)
 # Tokenize function
 def tokenize_to_set(file_lists):
     all_tokens = []
@@ -25,9 +45,11 @@ def tokenize_to_set(file_lists):
 
 # tokenize the target project:
 token_list_target = tokenize_to_set(target_file_lists)
+print(token_list_target)
 
 # tokenize the corpus:
 token_list_corpus = tokenize_to_set(corpus_file_lists)
+print(token_list_corpus)
 
 
 # 2-gram function
