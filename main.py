@@ -14,6 +14,20 @@ def get_python_files(folder_path):
     return python_files
 
 
+# target folder path
+target_folder_path = r"C:\Users\minhq\Desktop\target"
+# corpus folder path
+corpus_folder_path = r"C:\Users\minhq\Desktop\corpus"
+
+# target file lists
+target_file_lists = get_python_files(target_folder_path)
+
+# corpus file lists
+corpus_file_lists = get_python_files(corpus_folder_path)
+# print(target_file_lists)
+# print(corpus_file_lists)
+
+
 # Tokenize function
 def tokenize_to_set(file_lists):
     all_tokens = []
@@ -49,22 +63,170 @@ def tokenize_into_n_grams(token_list, n):
     return list_n_grams
 
 
-def syntacticRedundant(n):
-    if n <= len(token_list_target):
-        target_grams = tokenize_into_n_grams(token_list_target, n)
-        corpus_grams = tokenize_into_n_grams(token_list_corpus, n)
-        repeat = 0
-        for list_1 in target_grams:
-            for list_2 in corpus_grams:
-                if list_1 == list_2:
-                    repeat += 1
-                    break
-        if repeat == 0:
-            redundant = 0
-        else:
-            redundant = (repeat + n - 1) / len(token_list_target)
-    return redundant
+# ngrams the list of tokenize target project
+target_2_grams = tokenize_into_2_grams(token_list_target)
+# ngrams the list of tokenize corpus
+corpus_2_grams = tokenize_into_2_grams(token_list_corpus)
+
+# print(target_2_grams)
+# print(corpus_2_grams)
+
+# compare the to find the redundant
+repeat = 0
+for list_1 in target_2_grams:
+    for list_2 in corpus_2_grams:
+        if list_1 == list_2:
+            repeat += 1
+            break
+
+redundant_2_grams = (repeat + 1) / len(token_list_target)
+print(redundant_2_grams)
 
 
-for i in range(23, 24):
-    print(syntacticRedundant(i))
+def tokenize_into_3_grams(token_list):
+    list_3_grams = []
+
+    for i in range(len(token_list) - 2):
+        list_3_grams.append(token_list[i : i + 3])
+
+    return list_3_grams
+
+
+# ngrams the list of tokenize target project
+target_3_grams = tokenize_into_3_grams(token_list_target)
+# ngrams the list of tokenize corpus
+corpus_3_grams = tokenize_into_3_grams(token_list_corpus)
+
+# print(target_3_grams)
+# print(corpus_3_grams)
+
+# compare the to find the redundant
+repeat = 0
+for list_1 in target_3_grams:
+    for list_2 in corpus_3_grams:
+        if list_1 == list_2:
+            repeat += 1
+            break
+
+redundant_3_grams = (repeat + 2) / len(token_list_target)
+print(redundant_3_grams)
+
+
+# 5-gram function
+def tokenize_into_5_grams(token_list):
+    list_5_grams = []
+
+    for i in range(len(token_list) - 4):
+        list_5_grams.append(token_list[i : i + 5])
+
+    return list_5_grams
+
+
+# ngrams the list of tokenize target project
+target_5_grams = tokenize_into_5_grams(token_list_target)
+# ngrams the list of tokenize corpus
+corpus_5_grams = tokenize_into_5_grams(token_list_corpus)
+
+# print(target_5_grams)
+# print(corpus_5_grams)
+
+# compare the to find the redundant
+repeat = 0
+for list_1 in target_5_grams:
+    for list_2 in corpus_5_grams:
+        if list_1 == list_2:
+            repeat += 1
+            break
+
+redundant_5_grams = (repeat + 4) / len(token_list_target)
+print(redundant_5_grams)
+
+
+# 10-gram function
+def tokenize_into_10_grams(token_list):
+    list_10_grams = []
+
+    for i in range(len(token_list) - 9):
+        list_10_grams.append(token_list[i : i + 10])
+
+    return list_10_grams
+
+
+# ngrams the list of tokenize target project
+target_10_grams = tokenize_into_10_grams(token_list_target)
+# ngrams the list of tokenize corpus
+corpus_10_grams = tokenize_into_10_grams(token_list_corpus)
+
+# print(target_10_grams)
+# print(corpus_10_grams)
+
+# compare the to find the redundant
+repeat = 0
+for list_1 in target_10_grams:
+    for list_2 in corpus_10_grams:
+        if list_1 == list_2:
+            repeat += 1
+            break
+
+redundant_10_grams = (repeat + 9) / len(token_list_target)
+print(redundant_10_grams)
+
+
+# 25-gram function
+def tokenize_into_25_grams(token_list):
+    list_25_grams = []
+
+    for i in range(len(token_list) - 24):
+        list_25_grams.append(token_list[i : i + 25])
+
+    return list_25_grams
+
+
+# ngrams the list of tokenize target project
+target_25_grams = tokenize_into_25_grams(token_list_target)
+# ngrams the list of tokenize corpus
+corpus_25_grams = tokenize_into_25_grams(token_list_corpus)
+
+# print(target_25_grams)
+# print(corpus_25_grams)
+
+# compare the to find the redundant
+repeat = 0
+for list_1 in target_25_grams:
+    for list_2 in corpus_25_grams:
+        if list_1 == list_2:
+            repeat += 1
+            break
+
+redundant_25_grams = (repeat + 24) / len(token_list_target)
+print(redundant_25_grams)
+
+
+# 50-gram function
+def tokenize_into_50_grams(token_list):
+    list_50_grams = []
+
+    for i in range(len(token_list) - 49):
+        list_50_grams.append(token_list[i : i + 50])
+
+    return list_50_grams
+
+
+# ngrams the list of tokenize target project
+target_50_grams = tokenize_into_50_grams(token_list_target)
+# ngrams the list of tokenize corpus
+corpus_50_grams = tokenize_into_50_grams(token_list_corpus)
+
+# print(target_50_grams)
+# print(corpus_50_grams)
+
+# compare the to find the redundant
+repeat = 0
+for list_1 in target_50_grams:
+    for list_2 in corpus_50_grams:
+        if list_1 == list_2:
+            repeat += 1
+            break
+
+redundant_50_grams = (repeat + 49) / len(token_list_target)
+print(redundant_50_grams)
